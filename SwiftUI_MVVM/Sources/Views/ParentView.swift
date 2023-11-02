@@ -72,22 +72,22 @@ struct ParentView: View {
                 }
             )
             // Binding<AlertState?>
-            .alert(
+            .alert( // .fitAlert(
                 item: $viewModel.destination.case(/ParentViewModel.Destination.alert),
                 content: { alertState in
                     Alert(title: Text(alertState.title))
                 }
             )
-//            .fitAlert(
-//                item: $viewModel.destination.case(/ParentViewModel.Destination.alert),
-//                alert: { alertState in
-//                    /// alertView
-//                }
-//            )
     }
     
     private var bodyView: some View {
         Form {
+            navigationSection
+        }
+    }
+    
+    private var navigationSection: some View {
+        Section {
             Button {
                 viewModel.detailButtonTapped()
             } label: {
@@ -105,6 +105,8 @@ struct ParentView: View {
             } label: {
                 Text("Present Sheet")
             }
+        } header: {
+            Text("Navigation")
         }
     }
 }
