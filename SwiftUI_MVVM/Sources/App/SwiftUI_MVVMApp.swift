@@ -12,11 +12,7 @@ struct SwiftUI_MVVMApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(
-                viewModel: RootViewModel(
-                    tab: .parent,
-                    counterViewModel: .init(),
-                    parentViewModel: .init(path: [.detailChild(.init())], parentViewModel: .init())
-                )
+                viewModel: RootViewModel(tab: .counter, counterViewModel: .init(), parentViewModel: .init(parentViewModel: .init()))
             )
         }
     }
