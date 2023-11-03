@@ -2,28 +2,6 @@
 # Edit at https://www.gitignore.io/?templates=swift,macos
 
 
-
-### Tuist derived files ###
-graph.dot
-Derived/
-Tuist/Preferences/com.kakaopay.tuist.plist
-Tuist/Preferences/com.tuism.plist
-
-### Tuist managed dependencies ###
-
-Tuist/Dependencies/graph.json
-Tuist/Dependencies/Carthage
-Tuist/Dependencies/SwiftPackageManager
-Tuist/Dependencies/Tools
-
-
-### Projects ###
-
-*.xcodeproj
-*.xcworkspace
-
-
-
 ### macOS ###
 # General
 .DS_Store
