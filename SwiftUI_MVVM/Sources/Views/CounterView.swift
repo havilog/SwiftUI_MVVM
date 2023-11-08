@@ -8,7 +8,9 @@
 import SwiftUI
 import Dependencies
 
-/// `@Observable` macro는... 1년 뒤에 고민 ..
+/// `@Observable` macro는 금방 포팅됨
+/// 관찰만 할 경우 `let`, 바인딩이 필요한 경우 `@Bindable`
+///
 /// `final`, `@MainActor` == default
 /// output -> dependency -> init -> input -> private
 /// TODO: Input에 대한 interface통일, Output(ViewState), DataStream를 만들지 안만들지는 고민 및 논의 필요
@@ -65,7 +67,7 @@ final class CounterViewModel: ObservableObject {
     
     func networkButtonTapped() async {
         do {
-            let homeList = try await homeAPI.list(with: "with some parameter")
+            let homeList = try await homeAPI.list(with: "some parameter")
             self.homeList = homeList
         }
         catch {
