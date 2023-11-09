@@ -95,6 +95,12 @@ struct CounterView: View {
     ///     - 뷰 자체가 object와 생명주기를 같이 하는 owner일 때
     /// `@ObservedObject`
     ///     - data를 외부에서 주입받는 경우
+    ///
+    /// `Observation`
+    /// `let`
+    ///     - 뷰모델을 옵저빙만 할 경우
+    /// `@Bindable`
+    ///     - 바인딩이 필요할 경우
     @ObservedObject var viewModel: CounterViewModel
     
     /// body에는 웬만하면 bodyView로 빼고
