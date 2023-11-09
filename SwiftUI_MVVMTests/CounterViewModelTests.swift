@@ -59,16 +59,26 @@ final class CounterViewModelTests: XCTestCase {
         } operation: {
             CounterViewModel()
         }
+        
         XCTAssertEqual(sut.isTimerOn, false)
         XCTAssertEqual(sut.secondsElapsed, .zero)
         sut.startTimerButtonTapped()
-        sut.startTimerButtonTapped()
-        sut.startTimerButtonTapped()
+        
         XCTAssertEqual(sut.isTimerOn, true)
         await clock.advance(by: .seconds(1))
-        sut.stopTimerButtonTapped()
         XCTAssertEqual(sut.secondsElapsed, 1)
+        await clock.advance(by: .seconds(2))
+        XCTAssertEqual(sut.secondsElapsed, 3)
+        await clock.advance(by: .seconds(1))
+        XCTAssertEqual(sut.secondsElapsed, 4)
+        sut.stopTimerButtonTapped()
+        
+        XCTAssertEqual(sut.secondsElapsed, 4)
         XCTAssertEqual(sut.isTimerOn, false)
+        
+        sut.startTimerButtonTapped()
+        await clock.advance(by: .seconds(2))
+        XCTAssertEqual(sut.secondsElapsed, 6)
     }
     
     func test_network() async {
