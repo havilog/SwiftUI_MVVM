@@ -11,9 +11,10 @@ import Dependencies
 /// `@Observable` macro는 금방 포팅됨
 /// 관찰만 할 경우 `let`, 바인딩이 필요한 경우 `@Bindable`
 ///
-/// `final`, `@MainActor` == default
-/// output -> dependency -> init -> input -> private
-/// TODO: Input에 대한 interface통일, Output(ViewState), DataStream를 만들지 안만들지는 고민 및 논의 필요
+/// `final`: dispatch 최적화
+/// `@MainActor`: 뷰에 뿌려질 정보들은 메인으로 돌아야 하기 떄문에
+///
+/// input, output procotol: 굳이 안해도 인터페이스가 보기 쉬워서 안하기로 협의
 @MainActor
 final class CounterViewModel: ObservableObject {
     
@@ -73,15 +74,6 @@ final class CounterViewModel: ObservableObject {
         catch {
             self.homeList = []
         }
-    }
-}
-
-extension CounterViewModel: Hashable {
-    nonisolated static func == (lhs: CounterViewModel, rhs: CounterViewModel) -> Bool {
-        lhs === rhs
-    }
-    nonisolated func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
     }
 }
 
